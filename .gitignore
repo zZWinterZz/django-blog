@@ -1,7 +1,7 @@
 .vscode/
 env.py
 .env
-.venv
+.venv/
 venv/
 __pycachce__/
 *.py[cod]
