@@ -1,0 +1,10 @@
+.vscode/
+env.py
+.env
+.venv
+venv/
+__pycachce__/
+*.py[cod]
+settings.json
+db.sqlite3
+
