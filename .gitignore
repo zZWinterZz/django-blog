@@ -3,7 +3,7 @@ env.py
 .env
 .venv/
 venv/
-__pycachce__/
+__pycache__/
 *.py[cod]
 settings.json
 db.sqlite3
