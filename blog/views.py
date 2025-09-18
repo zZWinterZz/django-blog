@@ -1,3 +1,4 @@
+"""Views for blog app: post listing, detail, comment actions."""
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
 from django.contrib import messages
@@ -5,26 +6,15 @@ from django.http import HttpResponseRedirect
 from .models import Post, Comment
 from .forms import CommentForm
 
-# Create your views here.
 class PostList(generic.ListView):
+    """List published blog posts."""
     queryset = Post.objects.filter(status=1)
     template_name = "blog/index.html"
     paginate_by = 6
 
 
 def post_detail(request, slug):
-    """
-    Display an individual :model:`blog.Post`.
-
-    **Context**
-
-    ``post``
-        An instance of :model:`blog.Post`.
-
-    **Template:**
-
-    :template:`blog/post_detail.html`
-    """
+    """Show a single post and its comments."""
 
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
@@ -58,9 +48,7 @@ def post_detail(request, slug):
 
 
 def comment_edit(request, slug, comment_id):
-    """
-    view to edit comments
-    """
+    """Edit a comment for a post."""
     if request.method == "POST":
 
         queryset = Post.objects.filter(status=1)
@@ -81,9 +69,7 @@ def comment_edit(request, slug, comment_id):
 
 
 def comment_delete(request, slug, comment_id):
-    """
-    view to delete comment
-    """
+    """Delete a comment for a post."""
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
     comment = get_object_or_404(Comment, pk=comment_id)

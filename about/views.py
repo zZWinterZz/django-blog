@@ -1,11 +1,11 @@
+"""Views for about app: about page and collaboration form."""
 from django.shortcuts import render
 from django.contrib import messages
 from .models import About
 from .forms import CollaborateForm
 
-
 def about_me(request):
-
+    """Render about page and handle collaboration form."""
     if request.method == "POST":
         collaborate_form = CollaborateForm(data=request.POST)
         if collaborate_form.is_valid():
